@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Date</title>
+</head>
+<body>
+      <h1>Date</h1>
+      
+      <!-- JavaScript -->
+      <script>
+            let time = new Date();
+            console.log("Current time : \n", time);
+
+            time = new Date(2019, 9, 10, 15, 21, 43);
+            console.log("Year, Month, Day, hour, min, sec : \n ", time);
+
+            // String date format
+            time = new Date("November 6, 2019")
+            console.log("Intialized with a date string : \n", time)
+
+            time = new Date("2019-10-20");
+            console.log("Initialized with (yyyy-mm-dd): \n", time)
+
+            time = new Date();
+            console.log("Current time in my timezone : \n", time);
+
+            console.log("My timezone offset in minutes: ", time.getTimezoneOffset());
+
+            console.log("The UTC time is :", time.toUTCString())
+
+
+            //////////////////////////////
+
+            // Manipulating the DOM 
+            var dateToday = new Date();
+
+            function showDate() {
+                  var showDate = document.querySelector("#id");
+
+                  showDate.innerHTML += dateToday.getMonth()+'/'+ dateToday.getDate()+'/'+ dateToday.getFullYear();
+
+                  showDate.innerHTML += dateToday.toLocaleDateString ('en-IN', { weekday: "long", year: "numeric", month: "long", day:"numeric"});
+
+                  showDate.innerHTML += dateToday.toISOString().slice(0,10);
+
+                  showDate.innerHTML += dateToday.toISOString().split('T')[0]; 
+             }
+      </script>
+</body>
+</html>

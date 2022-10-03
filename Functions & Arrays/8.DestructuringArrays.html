@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Destructuring Arrays</title>
+</head>
+<body>
+      <h1>Destructuring Arrays</h1>
+
+      <!-- JS  -->
+      <script>
+         let numbers = [10, 20, 30, 40];
+         let [a, b, c, d] = numbers;
+
+         console.log("Values after the first assigment (no rest parameters) : \n")
+
+         console.log("Value of a : " + a );
+         console.log("Value of b : " + b );
+         console.log("Value of c : " + c );
+         console.log("Value of d : " + d );
+
+         [a, b, c] = numbers
+
+        console.log("Values after the second assigment (no rest parameters) : \n")   
+
+         console.log("Value of a : " + a );
+         console.log("Value of b : " + b );
+         console.log("Value of c : " + c );
+
+         [a, ...b] = numbers
+
+          console.log("Values after  [a, ...b] : \n")   
+          console.log("Value of a : " + a );
+         console.log("Value of b : " + b );
+
+         [, ...a] = numbers
+          console.log("Values after  [, ...b] : \n")   
+          console.log("Value of a : " + a );
+        
+      </script>
+</body>
+</html>

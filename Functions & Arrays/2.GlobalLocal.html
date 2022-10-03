@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>GlobalLocal</title>
+</head>
+<body>
+      <h1>Global Local data</h1>
+
+      <!-- JS -->
+      <script>
+            let globalLet = "This is a global varialble declared with let";
+            var globalVar = "This is a global varialble declared with var";
+
+            let numLet = 10;
+            var numVar = 20;
+            const NUM_CONST = 30;
+
+            function firstFunction() {
+                  let localLet = "This is a local variable declared with let";
+                  var localVar = "This is a local variable declared with var";
+                  undeclaredLocalVar = "This is an undeclared varialble";
+                  // GLOBAL
+                  console.log("globalLet from inside firstFunction :", globalLet);
+                  console.log("globalVar from inside firstFunction :", globalVar);
+
+                  console.log("numLet from inside firstFunction :", numLet);
+                  console.log("numVar from inside firstFunction :", numVar);
+                  console.log("NUM_CONST from inside firstFunction :", NUM_CONST);
+                  
+                   // LOCAL 
+                  console.log("localLet from inside firstFunction :", localLet);
+                  console.log("localVar from inside firstFunction :", localVar);
+                  console.log("underclaredLocalVar from inside firstFunction :", undeclaredLocalVar);
+            }
+             firstFunction()
+            // GLOBAL
+            console.log("globalLet from inside firstFunction :", globalLet);
+            console.log("globalVar from inside firstFunction :", globalVar);
+
+            console.log("numLet from inside firstFunction :", numLet);
+            console.log("numVar from inside firstFunction :", numVar);
+            console.log("NUM_CONST from inside firstFunction :", NUM_CONST);
+
+            // LOCAL 
+            // console.log("localLet from inside firstFunction :", localLet); unable
+            // console.log("localVar from inside firstFunction :", localVar); unable
+            console.log("underclaredLocalVar from inside firstFunction :", undeclaredLocalVar);
+
+
+
+            function secondFunction () {
+                  //Redeclaring the Global Varialble inside a function
+                  let numLet = 100;
+                  var numVar = 200;
+                  let NUM_CONST = 300;
+
+                  console.log("Redeclated numLet from inside secondFunction :", numLet);
+                  console.log("Redeclated numVar from inside secondFunction :", numVar);     
+                   
+            }
+            secondFunction ()
+            console.log("numLet from outside after invoking secondFunction :", numLet);
+            console.log("numVar from outside after invoking secondFunction :", numVar);    
+
+
+
+            function thirdFunction () {
+                  //Updateing  the Global Varialble inside a function
+                  numLet = 1000;
+                  numVar = 2000;
+                  // NUM_CONST = 3000; unable
+
+                  console.log("Updated numLet from insdide  thirdFunction :", numLet);
+                  console.log("Updated numVar from insdide  thirdFunction :", numVar); 
+            }
+            thirdFunction ()
+            console.log("numLet from outside after invoking thirdFunction :", numLet);
+            console.log("numVar from outside after invoking  thirdFunction :", numVar); 
+
+
+
+            function forthFunction () {
+                  console.log ("Starting first for loop...");
+
+                  for (let i = 0 ; i < 10 ; i++){
+                        console.log(i)
+                  }
+                  // console.log("Value of i from fourthFunction : ", i); unable
+
+                  console.log ("Starting second for loop...");
+
+                  for (var j = 0 ; j < 10 ; j++){
+                        console.log(j)
+                  }
+
+                  console.log("Value of j from fourthFunction : ", j);
+            }
+            forthFunction ();
+            //console.log("Value of i from fourthFunction : ", i);  unable
+            // console.log("Value of j from fourthFunction : ", j); unable
+
+      </script>
+</body>
+</html>

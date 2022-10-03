@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>While Loop and For Loop</title>
+</head>
+<body>
+      <h1>While Loop and For Loop</h1>
+
+      <!-- JavaScript  -->
+      <script>
+            console.log("While Loops");
+
+             console.log("Integers from 1 to 10 : ");
+
+             let i = 1; 
+            //  while (i <= 10) {
+
+            //        console.log(i);
+
+            //        i++;
+            //  }
+
+             console.log("Even Integers from 1 to 20 : ");
+            //  while (i <= 20) {
+
+            //        let num = i%2 ;
+            //        if(num == 0) {
+            //              console.log(i)
+            //        }
+
+            //        i++;
+            //  }
+
+            console.log("Increasing order of series (with break) : ");
+            // while(i <= 10) {
+            //       console.log(i);
+            //       i++;
+            //       if ( i == 5) {
+            //             break;
+            //       }
+            // }
+
+
+            console.log("Deccreasing order of series (with continue) : ");
+            // i = 11;
+            // while(i > 1) {
+                 
+            //       i--;
+            //       if ( i == 5) {
+            //            continue;
+            //       }
+            //       console.log(i);
+            // }
+
+            console.log("do-while Loops : ");
+            // let factorial = 1;
+            // let n = 5;
+            // i = 1 ;
+
+            // do {
+            //       factorial *= i ;
+            //       i++;
+            // } 
+            // while ( i <= n);
+            // console.log("Factorial of " + n + " = " + factorial)
+
+            console.log("Fibonacci series using For Loop : " );
+            let a = 0, b = 1, c;
+            let count = 10;
+
+            for (let i = 3; i <= count; i++) {
+                  c = a + b;
+                  a = b;
+                  b = c;
+
+                  console.log(c);
+            }
+      </script>
+</body>
+</html>

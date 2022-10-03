@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Object Creation</title>
+</head>
+<body>
+      <h1>Object Creation</h1>
+
+      <script>
+            let firstItem = {id: 1, name: "laptop", price: 500};
+
+            let secondItem = {id: 2, name:"watch", price: 240, brand: "Sonical"};
+
+            console.log(`firstItem has a  name of ${firstItem.name} 
+            and a price of ${firstItem.price}.`)
+
+            console.log(`secondItem has a name of ${secondItem["name"]} 
+            and a price of ${secondItem["price"]}.`)
+
+
+            const USD_EUR = 0.9;
+
+            let thirdItem = {id: 3,
+                             name: "headphones",
+                             brand: "Sonical",
+                             price: 84,
+                             priceEUR: this.price * USD_EUR //unable
+                           };
+
+            console.log("Price if thirdItem in Euros: ", thirdItem.priceEUR);
+
+            thirdItem = {id: 3,
+                        name: "headphones",
+                        brand: "Sonical",
+                        price: 84,
+                        priceEUR: function(){ return this.price * USD_EUR }
+                        };
+            console.log("Price if updated thirdItem in Euros: ", thirdItem.priceEUR());
+
+            thirdItem = {id: 3,
+                        name: "headphones",
+                        brand: "Sonical",
+                        price: 84,
+                        priceEUR(){ return this.price * USD_EUR } //ES6
+                        };
+            console.log("Price if ES6 thirdItem in Euros: ", thirdItem.priceEUR());
+
+            //adding new property
+            thirdItem.mfgCountry = "Canada";
+            console.log("The thirdItem is: ", thirdItem);
+
+
+            let fourthItem = new Object();
+
+            fourthItem.id = 4;
+            fourthItem.name = "cell phone";
+            fourthItem.price = 450;
+
+            console.log("The fourthItem is: ", fourthItem);
+            
+            //delete property
+            delete fourthItem.price ;
+            console.log("The fourthItem is: ", fourthItem);
+      </script>
+</body>
+</html>

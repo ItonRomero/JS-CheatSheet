@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Object Copying</title>
+</head>
+<body>
+      <h1>Object Copying</h1>
+
+      <script>
+            let myCar = {
+                  make : "Volvo",
+                  model : "S60",
+                  price : 42000,
+                  color: "Grey",
+
+                  seats : {
+                        material: "Leather",
+                        color: "Brown"
+                   }
+            };
+            console.log("My car: ", myCar)
+            //shallow copy  same with original object
+            let yourCar = myCar;
+            console.log("Your car: ", yourCar)
+
+            yourCar.tyres = "Pirelli";
+            yourCar.seats.color = "Grey";
+            console.log("Your car: ", yourCar)
+
+
+            console.log("My car: ", myCar);
+            var hisCar = Object.assign({}, myCar);
+
+            hisCar.color = "Red";
+            hisCar.seats.color = "Neon Green";
+
+            console.log("The effect of Object.assign():");
+            console.log("His car: ", hisCar);
+            console.log("My car: ", myCar);
+
+            var herCar = {...myCar};
+
+            console.log("Her car: ", herCar);
+
+            herCar.seats.color = "Black";
+
+            console.log("The effect of the spread syntax:");
+            console.log("Her car: ", herCar);
+            console.log("My car: ", myCar);
+
+
+             myCar = {
+                  make : "Volvo",
+                  model : "S60",
+                  price : 42000,
+                  color: "Grey",
+
+                  seats : {
+                        material: "Leather",
+                        color: "Brown"
+                   }
+            };
+            //Deep Copy . mismatch with original copy
+            yourCar = JSON.parse(JSON.stringify(myCar));
+            //note , you can't use JSON.parse and JSON.stringify() for function
+            yourCar.tyres = "Pirelli";
+            yourCar.seats.color = "Purple";
+
+            console.log("The effect of JSON.parse and JSON.stringify()");
+            console.log("Your car: ", yourCar);
+            console.log("My car: ", myCar);
+
+      </script>
+</body>
+</html>

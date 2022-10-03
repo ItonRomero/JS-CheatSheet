@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>JS Errors</title>
+</head>
+<body>
+      <h1>JS Errors</h1>
+      <p>Enter a number</p>
+      <input type="text" id="num">
+      <br>
+      <button type="button" onclick="isEven()">Test Input</button>
+      <!-- JS  -->
+      <script>
+           
+            "use strict"; //activating strict mode
+            // try & catch block
+           
+            // try {
+            //       document.write("Welcome guest");
+            //       document.write(Null)
+            //       console.log("No error!");
+            // }
+            // catch(err) {
+            //       console.log(err.message)
+            // }
+
+            function isEven () {
+                  var a ;
+                  a = document.getElementById("num").value
+
+                  try{
+                        if((a % 2) ==0) {
+                              console.log("The entered number is even");
+                        }
+                        else {
+                              throw "not an even number";
+                        }
+                  }
+                  catch(msg) {
+                        console.log("The entered value is " + msg);
+                  }
+                  finally { //finally block
+                        console.log("I get executed regardless of the try/catch result")
+                  }
+            }
+      </script>
+      
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Map and Reduce in Arrays</title>
+</head>
+<body>
+      <h1>Map and Reduce in Arrays</h1>
+
+      <script>
+            let items = [
+                  { name: "meat", price: 25 },
+                  { name: "vegetable", price: 17 },
+                  { name: "cake", price : 20 },
+                  { name: "drinks", price : 38 }
+            ];
+
+            //Using  for loop
+            let prices = [];
+
+            for ( let item of items) {
+                  prices.push(item.price);
+            }
+            console.log("Price list using for loop: " + prices);
+
+            //Map Method
+            let priceList = items.map(function(item) {
+                  return item.price;
+            });
+            console.log("Price list using for mapping: " + priceList);
+
+            //ES6 syntax
+            priceList = items.map(item => item.price);
+            console.log("Price list after mapping (with ES6 syntax): " + priceList);
+
+
+            //////////////////////////////////
+
+            //Using  for loop
+            let total = 0 ;
+
+            for ( let item of items) {
+                  total += item.price;
+            }
+            console.log("Total cost of items (for loop): " + total);
+
+            //reduce method
+            let totalreducer = items.reduce((sum, item) => sum + item.price, 0);
+            console.log("Total cost of items (reducer): " + totalreducer);
+
+            //filter method
+            let expensiveItems = items.filter(item => item.price >= 25); 
+            console.log("The expensive items are : ", expensiveItems);
+
+            let costExpensiveItems = expensiveItems.reduce((sum, item) => sum + item.price, 0);
+             console.log(" The Total cost of the expensice items : ", costExpensiveItems );
+
+
+            ///////////////////////
+
+            const values = [ 3, 1, 3, 5, 2, 4, 4, 4];
+            const setOfValues = new Set(values);
+            const uniqueValues = [...setOfValues]; //spread syntax
+
+            console.log("Unique elements of array : " + uniqueValues);
+
+
+      </script>
+</body>
+</html> 

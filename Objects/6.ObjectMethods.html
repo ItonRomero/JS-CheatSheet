@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Object Methods</title>
+</head>
+<body>
+      <h1>Object Methods</h1>
+
+      <script>
+             myCar = {
+                  make : "Volvo",
+                  model : "S60",
+                  price : 42000,
+                  color: "Grey",
+
+                  seats : {
+                        material: "Leather",
+                        color: "Brown"
+                   }
+            };
+
+            var samsCar = Object.create(myCar); // create a protype copy of object
+            samsCar.seats.color = "White"
+            
+            console.log("The effect of Object.create()");
+            console.log("Sam's car: ", samsCar);
+            console.log("My car: ", myCar);
+
+
+            console.log("What are the Object's keys? ");
+            console.log(Object.keys(myCar)); // to return all of objects keys as arrays
+
+            console.log("What are the Object's values? ");
+            console.log(Object.values(myCar)); // to return all of objects values as arrays
+
+            console.log("The Object's entries ");
+            console.log(Object.entries(myCar)); // to return all of thet key and values in form of array of arrays
+
+
+
+            let s60Engine = {
+                  cylinder: 4,
+                  displacement: 2000,
+                  horsepower: 250
+            }
+
+            //added oject filled for object
+            let yourCar = Object.assign(myCar, {engine: s60Engine});
+
+            console.log("The effect of Object.assign():");
+            console.log("Your car: ", yourCar);
+            console.log("My car: ", myCar);
+            
+
+
+            let herCar = Object.freeze(myCar); //to froze the object
+
+            //herCar.color = "Yellow"; not possible
+            herCar.seats.color = "Red"; //possible for nested object
+
+            //herCar.tyres = "Pirelli"; //not possible
+            herCar.seats.bucket = true; //possible for nested object
+
+            console.log("The effect of Object.freeze():");
+            console.log("Her car: ", herCar);
+            console.log("My car: ", myCar);
+
+
+
+            let hisCar = Object.seal(myCar); //need to turn off the strict mode
+
+            hisCar.color = "White"; //possible for object if strict mode is off
+            hisCar.seats.color = "White"; //possible for nested object
+
+            hisCar.weight = 1632;  //possible for object if strict mode is off
+            hisCar.engine.torque = 350;     //possible for nested object 
+
+
+            console.log("The effect of Object.seal():");
+            console.log("His car: ", hisCar);
+            console.log("My car: ", myCar);
+
+      </script>      
+</body>
+</html>

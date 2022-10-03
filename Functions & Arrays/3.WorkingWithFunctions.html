@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Working with Functions</title>
+</head>
+<body>
+      <h1>Working with Functions</h1>
+
+      <!-- JS -->
+      <script>
+            function mphTokmph(mph){
+               console.log("MPH value enterd: ", mph);
+
+               return 1.61 * mph;   
+            }
+            let speedLimit = mphTokmph(65);
+            console.log("Speed limit in KM/h : ", speedLimit);
+
+            // Arrow function ES6
+            let mphTokmphArrow = mph => {
+               console.log("MPH value enterd: ", mph);
+
+               return 1.61 * mph;  
+            }
+            speedLimit = mphTokmphArrow(65);
+            console.log("Speed limit in KM/h (arrow) : ", speedLimit);
+
+            //More consize
+            let mphTokmphImplicit = mph => 1.61 * mph;
+
+            speedLimit = mphTokmphImplicit(65);
+            console.log("Speed limit in KM/h (implicit return) : ", speedLimit);
+
+            //Implicit return syntax
+            let triangleArea = (base, height) => 0.5 * base * height;
+            console.log("Area of a triangle with base of 5 height of 4: ", triangleArea(5, 4));
+
+            //Reused function
+            let functionCopy = triangleArea;
+            console.log("Area of a triangle with base of 8 height of 14: ", functionCopy(8, 14));
+
+            //anonymous function
+            var x = function(f){return 5 * (f-32) / 9}
+            console.log("50F in celsius is: ", x(50))
+      </script>
+      
+</body>
+</html>

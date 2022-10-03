@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>InstanceOf</title>
+</head>
+<body>
+      <h1>Instance Of</h1>
+
+      <script>   
+             //blueprint for an object using class constructor
+            class Vehicle {
+                  constructor(make, model, price) {
+                        this.make = make;
+                        this.model = model;
+                        this.price = price;
+                  }
+            }
+
+            let myCar = new Vehicle("Volkswagen", "GTI", 29000);
+            
+            //deep copy
+            let yourCar = JSON.parse(JSON.stringify(myCar));
+            //spread syntax
+            let herCar = {...myCar}; 
+            //Protoptype for a new object
+            let hisCar = Object.create(myCar); 
+
+            console.log("Is myCar a Vehicle? ", myCar instanceof Vehicle);
+
+            console.log("Is yourCar(deep copy) a Vehicle? ", yourCar instanceof Vehicle);
+
+            console.log("Is herCar(spread syntax) a Vehicle? ", herCar instanceof Vehicle);
+
+            console.log("Is hisCar(Object.create) a Vehicle? ", hisCar instanceof Vehicle);
+
+
+            console.log("Type of MyCar: ", typeof myCar);
+            console.log("Type of yourCar: ", typeof yourCar);
+            console.log("Type of herCar: ", typeof herCar);
+            console.log("Type of hisCar: ", typeof hisCar);
+
+
+            console.log("MyCar: ", myCar);
+            console.log("yourCar: ", yourCar);
+            console.log("herCar: ", herCar);
+            console.log("hisCar: ", hisCar);
+
+
+            /////////////////////////////////
+
+            // create child or sub-class of vehicle 
+            class Motorcycle extends Vehicle {
+                  constructor(make, model, price, seatHeight) {
+                        super(make, model, price); // to invoke the (make, model, price) constuctor from vehicle
+                        this.seatHeight = seatHeight; // assign new
+                  }
+            }
+
+            let myBike = new Motorcycle("Ducati", "Monster", 10000);
+
+            console.log("Is myBike a Motorcycle? ", myBike instanceof Motorcycle);
+            console.log("Is myBike a vehicle ", myBike instanceof Vehicle);
+
+
+            ////////////////////////////
+
+            //blueprint for an object using function constructor
+            function City(name, area, population) {
+                  this.name = name ;
+                  this.area = area ; 
+                  this.population = population;
+            }
+
+            let myCity = new City("Bongalore" , 8000, 900000);
+            console.log("Is myCity a City", myCity instanceof City);
+      </script>
+</body>
+</html>

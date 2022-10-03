@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Object Constructors</title>
+</head>
+<body>
+      <h1>Object Constructors</h1>
+
+      <label>Chose a course: </label>
+      <div>
+            <select id="courses" size="3" onchange="choiceMade(this.value)">
+                  <option value="" selected>---Chooses ----</option>
+                  <option value="angular">Angular</option>
+                  <option value="reacjs">React</option>
+                  <option value="vuejs">Vue</option>
+                  <option value="JavaScript">JavaScript</option>
+                  <option value="Python">Python</option> 
+            </select>
+            <div>
+            <div id="courseInfo"></div>
+            </div>
+      </div>
+      
+      <script>
+            //blueprint to create object
+            //Object contructor using Funcction
+            function Car(make, model, price, engine) {
+                  this.make = make;
+                  this.model = model;
+                  this.price = price;
+                  this.engine = engine;
+            }
+
+            //object
+            let s60Engine = {
+                  cylinders: 4,
+                  displacement: 2000,
+                  horsepower: 250
+            }
+
+
+            let myCar = new Car("Volvo", "S60", 42000, s60Engine);
+            console.log(`My car is a ${myCar.make} ${myCar.model}`)
+
+            //new object
+            let caymanEngine = {
+                  cylinders: 4,
+                  displacement: 2500,
+                  horsepower: 250
+            }
+
+            let yourCar = new Car("Porsche", "718", 61000, caymanEngine);
+            console.log(`Your car is a ${yourCar.make} ${yourCar.model}`)
+
+
+
+            //blueprint to create object w/ function
+            function Car(make, model, price, engine) {
+                  this.make = make;
+                  this.model = model;
+                  this.price = price;
+                  this.engine = engine;
+
+                  this.details = function() {
+                        console.log(`
+                              Make: ${this.make}
+                              Model: ${this.model}
+                              Price: ${this.price}`);
+                  };
+
+                  this.engine.details = function() {
+                        console.log(`
+                              Displacement: ${this.displacement}cc
+                              Horsepower: ${this.horsepower}bhp`);
+                  };
+            };
+
+            myCar = new Car("Volvo", "S60", 42000, s60Engine);
+            console.log("My Car Details: \n");
+            myCar.details();
+
+            console.log("My engine Details: \n");
+            myCar.engine.details();
+
+
+            //Object contructor using Classes 
+            class Vehicle {
+                  constructor(make, model, price, engine){
+                        this.make = make;
+                        this.model = model; 
+                        this.price = price;
+                        this.engine = engine;
+                  };
+
+                  details = function() {
+                        console.log(`
+                              Make: ${this.make}
+                              Model: ${this.model}
+                              Price: ${this.price}`);
+                  };
+            };
+
+            myCar = new Vehicle("Volvo", "S60", 42000, s60Engine);
+            console.log("My Car Details: \n");
+            myCar.details();
+
+            ////////////////////////////
+
+            // DOM MINUPULATION 
+
+            var instructor = "axle Barr";
+
+            class Courses {
+                  constructor(coursesName, instructor) {
+                        this.coursesName = coursesName;
+                        this.instructor = instructor
+                  }
+                  //function
+                  about () {
+                       return this.coursesName + " is being taugt by " + this.instructor;      
+                  }
+            }
+
+            function choiceMade(courseChosen) {
+                  currentCourses = new Courses(courseChosen, instructor);
+                  document.getElementById("courseInfo").innerHTML = currentCourses.about();
+            }
+
+
+      </script>
+</body>
+</html>
