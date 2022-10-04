@@ -1,11 +1,15 @@
 1. Function as first Class Object
       -Function as Arguments to Other Functions 
       -Functions as Return Values of Functions
+
 2. Pass By Value and Reference
       - Passing by Value and by Reference
+
 3. New Function
       - The New Keywork to create Functions
+      
 4. Function Callback
       - Function Callbacks
+      
 5. Call Appy Bind
       -Linkinf Functions to Object

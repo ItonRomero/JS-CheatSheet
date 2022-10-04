@@ -1,0 +1,28 @@
+1. Basic Function
+      - An Introduction to Functions in JavaScript
+
+2. Global Local
+      - Global and Local Varialbles
+
+3. Working With Functions
+      - Working with Functions
+
+4. JS Errors
+      - The Fundamentals of Error Handling
+
+5. Array
+      - Creating Arrays
+
+6. Rest Parameter
+      - Rest Parameter in JavaScript
+
+7. Spread Operator
+      - The Spread Syntax for Arrays
+
+8. Destructuring Arrays
+      - Destructuring Arrays
+
+9. Array Operations   
+      - Copying Arrays 
+      - Splicing and Slicing Arrays
+      - Concatenating and Sorting Arrays
