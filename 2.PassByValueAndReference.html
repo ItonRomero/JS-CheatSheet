@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pass By Value and by Reference</title>
+</head>
+<body>
+      <h1>Pass By Value and by Reference</h1>
+
+      <script>
+            function passByValueAndReference() {
+                  let name = "Tyson"; //primitive type // will pass by value 
+                  let person = {name: "Myra", city: "Austin"}; //object type //will pass by reference
+
+                  console.log("Initial value of name = ", name);
+                  console.log("Initial value of person = ", person);
+
+                  modifyData(name, person); //calling the 2nd function for modification
+
+                  console.log("Final value of name = ", name);  //pass by value
+                  console.log("Final value of person = ", person); //pass by reference
+            }
+
+            function modifyData(primitiveType, objectType) {
+
+                  primitiveType = "Victor";
+                  objectType.name = "Olivia";
+
+                  console.log("Updated primitivetype : ", primitiveType);
+                  console.log("Updated objectType : ", objectType);
+            }
+
+
+
+
+            passByValueAndReference();
+      </script>
+</body>
+</html>

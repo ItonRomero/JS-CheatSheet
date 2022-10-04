@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Function Callback</title>
+</head>
+<body>
+      <h1>Function Callback</h1>
+      
+      <script>
+            // invoke 1 function by passing 2nd function as arguement 
+            
+            let items = [
+                  { name: "meat", price: 25},
+                  { name: "vagetables", price: 17},
+                  { name: "cake", price: 20},
+                  { name: "drinks", price: 38}
+            ];
+            /*
+            function getTotalCost(items) {
+                  return items.reduce((sum, item) => sum + item.price, 0);
+            }
+
+            var totalCost = getTotalCost(items);
+            console.log("Total cost: ", totalCost);
+            */
+            function applyTaxes(totalCost) {
+                  return 1.05 * totalCost;
+            }
+
+            //console.log("Total after taxes: ", applyTaxes(totalCost))
+
+            function getTotalCost(items, callback) {
+                  let totalCost = items.reduce((sum, item) => sum + item.price, 0)
+                  return callback(totalCost)
+            }
+
+            var totalAfterTaxes = getTotalCost(items, applyTaxes);
+            console.log("Total after taxes (callback) : ", totalAfterTaxes)
+      </script>
+</body>
+</html>

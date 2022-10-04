@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Function as First Class Objects</title>
+</head>
+<body>
+      <h1>Function as First Class Objects</h1>
+
+      <!-- JS -->
+      <script>
+            // function declaration function(a, b) { return a + b}
+            //assign function to variable
+            let addition = function(a, b) {
+                  return a + b;
+            }
+
+            let multiplication = function(a, b) {
+                  return a * b;
+            }
+
+            let subtraction = function(a, b) {
+                  return a - b;
+            }
+
+            let division = function(a, b) {
+                  return a / b;
+            }
+
+            // supply function as arguement to other function
+            function calculation(a, b, calculationType) {
+                  return calculationType(a, b);
+            }
+
+            let output = calculation(10, 30, addition)
+            console.log("Addition output = ", output)
+
+            output = calculation(10, 30, division)
+            console.log("division output = ", output)
+
+
+            // Funtion return another function 
+            let fxRates = {
+                  INR: 72,
+                  EUR: 0.9
+            }
+            let discounts = {
+                  INR: 0.1,
+                  EUR: 0.2
+            }
+            let inCart = {
+                  id: 1,
+                  total: 8100,
+                  currency: "INR"
+            }
+            let euCart = {
+                  id: 2,
+                  total: 772,
+                  currency: "EUR"
+            }
+                                    // cart is input arguement 
+            function getTotalPriceFn(cart){
+                  cart.finalTotal = cart.total * (1 - discounts[cart.currency]);
+
+                  function totalUSDPrice(){
+                        return cart.finalTotal / fxRates[cart.currency];
+                  }
+
+                  return totalUSDPrice;
+            }
+
+            let inCartTotalUSD = getTotalPriceFn(inCart)
+            console.log("Type of returned function ", typeof inCartTotalUSD);
+            console.log("Total of order from India ", inCartTotalUSD());
+
+            let euCartTotalUSD = getTotalPriceFn(euCart)
+             console.log("Total of order from EU ", euCartTotalUSD());
+
+      </script>
+</body>
+</html>
