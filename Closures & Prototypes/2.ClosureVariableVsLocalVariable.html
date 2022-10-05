@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Closure Variable VS Local Variable</title>
+</head>
+<body>
+      <h1>Closure Variable VS Local Variable</h1>
+      
+      <script>
+            // Global variable of PI
+            const PI = 3;
+            // Object Constructor representing circle
+            function Circle(r) {
+                  this.radius = r;
+            }
+            //function to calculate the area of a given circle
+            let getAreaFirst = function(circle){
+                  console.log("Inside getAreaFirst");
+                  console.log("Area of circle : ", PI * circle.radius * circle.radius)
+            }
+            
+            // declare an object of type circle under Global
+            let firstCircle = new Circle(10);
+
+            // Global function
+            function innerFunction() {
+
+                   //Closure Variable of PI
+                  const PI = 3.1
+                  //1st nested function
+                  let getAreaSecond = function(circle){
+                         console.log("Inside getAreaSecond");
+                         console.log("Area of circle : ", PI * circle.radius * circle.radius)
+                   }
+
+                  //2nd nested function
+                  let getAreaThird = function(circle){
+                         //local Variable of PI
+                         const PI = 3.14;
+                         console.log("Inside getAreaThird");
+                         console.log("Area of circle : ", PI * circle.radius * circle.radius)
+                  }
+
+                   //3rd nested function
+                  let getCircumference = function(circle){
+                         console.log("Inside Cicumference");
+                         console.log("Cicumference of circle : ", 2 * PI * circle.radius)
+                   }
+
+                   // declare an object of type circle inside of innterFunctions/scope
+                   let secondCircle = new Circle(20)
+
+                  //calling functions inside of the innerFunctions     
+                   console.log("innerFunction: Calling the functions with firstCircle");
+                   getAreaFirst(firstCircle); //this will access the PI from Global Variable
+                   getAreaSecond(firstCircle); //this will access the PI from Closure Variable
+                   getCircumference(firstCircle); //this will access the PI from Closure Variable
+                   getAreaThird(firstCircle); //this will access the PI from local Variable
+
+
+                   console.log("innerFunction: Calling the functions with secondCircle")
+                   getAreaFirst(secondCircle); //this will used the PI from Global Variable
+                   getAreaSecond(secondCircle); //this will access the PI from Closure Variable
+                   getCircumference(secondCircle); //this will access the PI from Closure Variable
+                   getAreaThird(secondCircle); //this will access the PI from local Variable
+            }
+
+            innerFunction()
+
+            //calling functions outside of the innerFunctions  
+            console.log("Outside: Calling the functions with firstCircle");
+            getAreaFirst(firstCircle); //this will access the PI from Global Variable
+           // getAreaSecond(firstCircle); //Unable: was declare inside of innerfunction
+           // getCircumference(firstCircle); //Unable: was declare inside of innerfunction
+           // getAreaThird(firstCircle); //Unable: was declare inside of innerfunction
+
+
+           function getAreaFourth(circle) {
+            //      closure variable
+                 const PI = 3.142;
+
+                 function calculateArea() {
+                       console.log("Inside getAreaFourth");
+                       console.log("Area of Circle :", PI * circle.radius * circle.radius);
+                 }
+                 
+                 return calculateArea
+           }
+
+           console.log("The value of PI in this scope : ", PI);
+           let circleArea = getAreaFourth(firstCircle);
+
+           circleArea();
+      </script>
+</body>
+</html>

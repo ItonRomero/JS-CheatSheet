@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Closure Counter</title>
+</head>
+<body>
+      <h1>Closure Counter</h1>
+
+      <script>
+            function counter() {
+                  let count = 0;
+
+                  function incrementCount() {
+                        return count += 1;
+                  }
+                  return incrementCount;
+            }
+
+            var countFn = counter();
+
+            console.log("1st invocation of countFn gives: ", countFn());
+            console.log("2nd invocation of countFn gives: ", countFn());
+
+            for ( var i = 3; i <= 8; i++ ){
+                 console.log(countFn());
+           
+            }
+
+
+            let anotherCountFn = counter();
+
+            console.log("1st invocation of anotherCountFn gives: ", anotherCountFn());
+            console.log("2nd invocation of anotherCountFn gives: ", anotherCountFn());
+
+            console.log("What about the original counter? Calling that... ", countFn());
+      </script>
+</body>
+</html>

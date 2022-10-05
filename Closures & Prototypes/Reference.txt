@@ -1,0 +1,27 @@
+1. Closure Intro
+      - An Introduction to Closures
+
+2. Closure Variable
+      - Closures and Variables in Outer Scopes
+      - Closures and Variables in Nested Functions
+
+3. Closure Counter
+      - Closures and Counters
+
+4. Closure With Buttons
+      - Closures and Web Page Elements
+
+5. Closure Scope
+      - Closures and Objects
+      - Closures and Loops
+
+6. Closure In Setter Getter
+      - Getters and Setters Using Closures
+
+7. Prototype Introductions
+      - An Introduction to Prototype
+      - Prototype and Classes
+      
+8. Prototypal Inheritance
+      - Basic Inheritance using Prototypes
+      - Multi-level Inheritance with Prototypes

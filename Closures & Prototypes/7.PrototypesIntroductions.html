@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Prototypes Introductions</title>
+</head>
+<body>
+      <h1>Prototypes Introductions</h1>
+      
+      <script>
+            // Object Constructor
+            function Student(name){
+
+                  this.name = name ;
+
+                  this.avgScore = (scoreArray) => 
+                        scoreArray.reduce((a,b) => a+b)/scoreArray.length;
+            }
+
+            var heidi = new Student("Heidi");
+            var ralf = new Student("Ralf");
+
+            console.log("The avgScore for each student: ");
+            console.log("Heidi: ", heidi.avgScore([64, 78, 59]));
+            console.log("Ralf: ", ralf.avgScore([85, 70, 67]));
+
+
+            console.log("\nWhat do the Student objects contain? : ");
+            console.log("Heidi: ", heidi);
+            console.log("Ralf: ", ralf);
+
+            /////////////////////////////
+            //Protorype
+            //advisable for too many data
+            function StudentProto(name) {
+                  this.name = name ;
+
+                  StudentProto.prototype.avgScore = (scoreArray) => 
+                        scoreArray.reduce((a,b) => a+b)/scoreArray.length;
+            }
+
+            heidi = new StudentProto("Heidi");
+            ralf = new StudentProto("Ralf");
+
+            console.log("\nThe avgScore for each student (proto): ");
+            console.log("Heidi: ", heidi.avgScore([64, 78, 59]));
+            console.log("Ralf: ", ralf.avgScore([85, 70, 67]));
+
+            console.log("\nWhat do the Student objects contain (proto)? : ");
+            console.log("Heidi: ", heidi);
+            console.log("Ralf: ", ralf);
+
+            //add new property
+            StudentProto.prototype.uniName = "XYZ";
+
+            console.log("\nThe uniNmae for each student (proto)? : ");
+            console.log("Heidi: ", heidi.uniName);
+            console.log("Ralf: ", ralf.uniName);
+
+            //Update the uniName property
+            StudentProto.prototype.uniName = "XYZ university";
+
+            console.log("\nThe Updated uniNmae for each student (proto)? : ");
+            console.log("Heidi: ", heidi.uniName);
+            console.log("Ralf: ", ralf.uniName);
+
+            
+            //////////////
+            // Multilple prototype 
+            //object constructor
+            function StudentMultiProto(name) {
+
+                  StudentMultiProto.prototype.uniName = "XYZ";
+                  this.name = name ;
+
+                  //prototype function
+                  StudentMultiProto.prototype.avgScore = (scoreArray) => 
+                        scoreArray.reduce((a,b) => a+b)/scoreArray.length;
+            
+                  //Another prototype function
+                  StudentMultiProto.prototype.intro = () => {
+                        console.log("My name is %s and I'm a student at %s. ", this.name, this.uniName);
+                  }
+            }
+
+            heidi = new StudentMultiProto("Heidi");
+            ralf = new StudentMultiProto("Ralf");
+
+            console.log("\nThe avgScore for each student (mulltiproto): ");
+            console.log("Heidi: ", heidi.avgScore([64, 78, 59]));
+            console.log("Ralf: ", ralf.avgScore([85, 70, 67]));
+
+
+            console.log("\n The intros for each student (multiproto): ");
+            console.log("Heidi: ")
+            heidi.intro();
+
+            console.log("Ralf: ")
+            ralf.intro();
+
+            console.log("\nWhat do the Student objects contain (multiproto)? : ");
+            console.log("Heidi: ", heidi);
+            console.log("Ralf: ", ralf);
+
+
+            ////////////
+            // Class keyword 
+            class StudentClass {
+                  uniName = "XYZ";
+                  
+                  constructor(name) {
+                        this.name = name ;
+                  }
+
+                  avgScore = (scoreArray) =>
+                        scoreArray.reduce((a,b) => a+b) / scoreArray.length;
+
+                  intro = () => {
+                        console.log("My name is %s and I'm a student at %s.", this.name, this.uniName);
+                  }
+            }
+
+            heidi = new StudentClass("Heidi");
+            ralf = new StudentClass("Ralf");
+
+            console.log("\nThe avgScore for each student (class): ");
+            console.log("Heidi: ", heidi.avgScore([64, 78, 59]));
+            console.log("Ralf: ", ralf.avgScore([85, 70, 67]));
+
+            console.log("\n The intros for each student (class): ");
+            console.log("Heidi: ")
+            heidi.intro();
+
+            console.log("Ralf: ")
+            ralf.intro();
+
+
+            console.log("\nWhat do the Student objects contain (class)? : ");
+            console.log("Heidi: ", heidi);
+            console.log("Ralf: ", ralf);
+
+
+
+      </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Closure Scope</title>
+</head>
+<body>
+      <h1>Closure Scope</h1>
+      
+      <script>
+            //Global variable
+            var boss = "Margaret";
+
+            // function constructor 
+            function employee(name, title) {
+                  //closure variable
+                  this.name = name;
+                  this.title = title;
+                  this.domain = "data"; 
+
+                  this.intro = function() {
+                        //local variable
+                        let empTitle = this.domain + " " + title; //title will be closure variable
+                        console.log (" My name is %s and I report to %s. My title is %s", name, boss, empTitle);
+                  }
+            }
+
+            var troy = new employee("Troy", "Analyst");
+
+            console.log(" The employee intoduction : ");
+            troy.intro();
+
+            // redeclare the boss vartiable 
+            boss = "Wolfgang";
+            console.log(" The employee intro after the boss change : ");
+            troy.intro();
+
+            //Update domain property for troy
+            troy.domain = "ML"
+            console.log(" Troy after his domain change: ");
+            troy.intro();
+
+             //Update title property for troy
+            troy.title = "Engineer"
+            console.log(" Troy after his title change: ");
+            troy.intro();
+
+            console.log("Troy: ", troy)
+
+
+            //////////////////////////////////////
+            // Closure and loops 
+
+            // function myFunction() {
+            //       console.log("'Hello' will be displayed after 10 seconds...!");
+            //       setTimeout(function(){ document.write("Hello");}, 10000);
+            // }
+
+            //  myFunction()
+
+            function timeoutTest() {
+                 // let i; closure - not advisable
+
+                  for(let i = 0; i <=3; i++){
+                        setTimeout(function(){
+                              console.log(i)
+                        }, i*3000);
+                  }
+            }
+
+            timeoutTest(); 
+
+      </script>
+</body>
+</html>

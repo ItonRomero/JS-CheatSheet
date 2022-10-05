@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Closure With Buttons</title>
+</head>
+<body>
+      <h1>Closure With Buttons</h1>
+      
+      <button id="incButton">Increment</button>   
+      <button id="decButton">Decrement</button>   
+
+      <div id="incCount"></div>
+      <div id="decCount"></div>
+
+      <!-- JS  -->
+      <script>
+            var decCount = 0; // initialize decCount outside of the onload
+            window.onload = function() {
+                  
+                  var incButton = document.getElementById("incButton");
+                  var incCount = 0 ;
+
+
+                  var decButton = document.getElementById("decButton");
+                  decButton.onclick = countDec; // calling countDec function that outside of the onload
+
+
+                  incButton.onclick = function() {
+                        incCount++; 
+                        var incCountMessage = document.getElementById("incCount");
+                        incCountMessage.innerHTML = "Increment counter = " + incCount;
+                  }
+            }
+
+            function countDec() { // Invoke the countdec function outside of the onload
+                  decCount--; 
+                  var decCountMessage = document.getElementById("decCount");
+                  decCountMessage.innerHTML = "Decrement counter = " + decCount;
+            }     
+      </script>
+</body>
+</html>

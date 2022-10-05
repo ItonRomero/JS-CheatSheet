@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Closure In Setter Getter</title>
+</head>
+<body>
+      <h1>Closure In Setter Getter</h1>
+      
+      <script>
+            //implement getter and setter using closure
+            function getterSetterData() {
+                  var myVar = 1;
+
+                  return {
+                        //object 
+                        getVar: function() { 
+                              return myVar;
+                        },
+
+                        setVar: function(v) {
+                              myVar = v;
+                        }
+                  };
+            }
+
+            let objVar = getterSetterData();
+            console.log("Inital value of myVar: ", objVar.getVar())
+
+            objVar.setVar(2);
+            console.log("Updated numeric value of myVar: ", objVar.getVar());
+            
+            objVar.setVar("I am now a string");
+            console.log("Updated string value of myVar: ", objVar.getVar());
+
+      </script>
+</body>
+</html>
