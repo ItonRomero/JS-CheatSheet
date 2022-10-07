@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Window Source Object</title>
+</head>
+<body>
+
+      <h1>Window Source Object</h1>
+      
+      Click this button to open a new window <br>
+      <button id="openButton"> Open!</button><br><br>
+
+      Click this button to close the newly opened window <br>
+      <button id="closeButton"> Close!</button> <br><br>
+
+      Click this button to view the history object <br>
+      <button id="historyButton"> History!</button> <br><br>
+
+       Click this button it will take you navigate to Wikipedia! <br>
+      <button id="wikipediaButton"> Wikipedia!</button> <br><br>
+
+      <div id="history"></div>
+
+      <!-- JavaScript -->
+
+      <script>
+            window.onload = function() {
+                  var openButton = document.getElementById("openButton");
+                  var closeButton = document.getElementById("closeButton");
+
+                  var historyButton = document.getElementById("historyButton")
+                  var wikipediaButton = document.getElementById("wikipediaButton");
+
+                  var newWindow = null;
+
+                  openButton.onclick = function() {
+                        newWindow = window.open("https://www.google.com/");
+                  }
+
+                  closeButton.onclick = function() {
+                        if(newWindow != null) {
+                              newWindow.close();
+                        }
+                  }
+
+
+                  historyButton.onclick = function() {
+                        var  browserHistory = document.getElementById("history");
+                        browserHistory.innerHTML = "Your browser window history has " + window.history.length + " entries! ";
+                  }
+
+                  wikipediaButton.onclick =  function() {
+                        window.location = "https://www.wikipedia.org/";
+                  }
+
+            }
+      </script>
+</body>
+</html>

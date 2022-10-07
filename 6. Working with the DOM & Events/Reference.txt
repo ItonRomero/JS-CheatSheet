@@ -1,0 +1,24 @@
+1. DOM Elements HTML CSS 
+      - An Introduction to Retrieving DOM Elements
+      - Modifying the DOM of a Web Page
+
+2. Nodes
+      - Accessing the Child Nodes of DOM Element
+      - Adding Nodes to the DOM
+      - Removing and Replacing Nodes in the DOM
+
+3. Animations
+      - Generating an Animation with JavaScript
+      
+4. Intro To Event Handlers
+      - An Introduction to Event Handling
+
+5. Multiple Event Handlers
+      - Event Handlers for Clicks and Input
+      - Event Handlers for Mouse Events
+
+6. BOM
+      - The Browser Object Model(BOM)
+
+7. Window Source Object
+      -The Window Object

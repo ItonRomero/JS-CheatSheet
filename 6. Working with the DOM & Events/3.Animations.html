@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Animations</title>
+      
+</head>
+<body>
+      <!-- CSS -->
+      <style>
+            #square {
+                  width: 500px;
+                  height: 500px;
+                  position: relative;
+                  background: yellow;
+            }
+
+            #circle {
+                  width: 50px;
+                  height: 50px; 
+                  position: absolute;
+                  background-color: red;
+                  border-radius: 50%;
+                  top: 450px;    
+            }
+      </style>
+      <!-- HTML  -->
+      <h1>Animations</h1>
+
+      <div id="square">
+            <div id="circle"></div>
+      </div>
+
+      <p><button onclick="animation()">Move!</button></p>
+
+
+      <!-- JavaScript -->
+      <script>
+            function animation() {
+                  var dot = document.getElementById("circle");
+
+                  var loc = 450;
+                  var time = setInterval(frame, 10) //10 milisections
+
+                   function frame() {
+                         if (loc == 0) {
+                               clearInterval(time);
+                         } else {
+                               loc--;
+                               dot.style.top = loc + "px";
+                               dot.style.right = loc + "px";
+                         }
+                   }
+            }
+      </script>
+</body>
+</html>

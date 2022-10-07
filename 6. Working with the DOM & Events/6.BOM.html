@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Browser Object Model</title>
+</head>
+<body>
+      <h1>Browser Object Model</h1>
+
+      Click this button - it will load a new document ... <br>
+      <button id="newDoc">Load!</button><br><br>
+
+      Click this button to go back.. <br>
+      <button id="goBack"> Back! </button>
+
+      <!-- JavaScript  -->
+      <script>
+            console.log("Width of the screen: ", screen.width);
+            console.log("height of the screen: ", screen.height);
+            console.log("Depth of the Color: ", screen.colorDepth);
+            
+            console.log("\n\nCurrent page location : ", window.location.href);
+
+            console.log("The protocol used: ", window.location.protocol);
+
+            var newDoc = document.getElementById('newDoc');
+
+            newDoc.onclick = function() {
+                  window.location.assign("https://www.google.com/");
+            }
+
+            var goBack = document.getElementById('goBack');
+
+            goBack.onclick = function() {
+                  window.history.back();
+            }
+
+            console.log("\n\nCheck whether the cookie is enabled or not: ",navigator.cookieEnabled);
+
+            console.log("Version of the browser: ", navigator.appVersion);
+            console.log("Platform of the browser: ", navigator.platform);
+      </script>
+
+</body>
+</html>

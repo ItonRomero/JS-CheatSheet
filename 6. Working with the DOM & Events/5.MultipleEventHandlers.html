@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Multiple Event Handlers</title>
+</head>
+<body>
+      <!-- HTML  -->
+      <h1>Multiple Event Handlers</h1>
+      <!-- Get Time with onclick -->
+      <button id="time">To get the time, Click me! </button>
+      <p id="currenttime"></p>
+      <hr><br>
+
+      
+      <!-- Update to onchange and onfocus  -->
+      Press enter to convert in to uppercase: <br>
+      Enter a word : <input type="text" id="convert">
+      <hr><br>
+
+
+      <!-- Mouse Hover -->
+      <div id="mouse"
+            style="background-color: pink;
+            width: 120px;
+            height: 10px;
+            padding: 40px;">Mouse Over me
+      </div>
+
+
+
+      <hr><br>
+      Click on the image and hold for some time..!
+      <br>
+      <img id="image" src="img/Wifi-Off.png" width="100" height="180">
+
+
+      <script>
+            window.onload = function() {
+                  time.onclick = displayDate;
+
+                  convert.onchange = convertIntoUppercase;
+                  convert.onfocus = onFocus;
+
+                  mouse.onmouseover = mouseOver;
+                  mouse.onmouseout = mouseOut
+
+                  image.onmousedown = wifiOn;
+                  image.onmouseup = wifiOff;
+           }
+
+
+            // 1. Dispaly Current Time 
+            function displayDate() {
+                  currenttime.innerHTML = Date();
+            }
+
+            //2. Convert to Uppercase
+            function convertIntoUppercase() {
+                  var uppercase = document.getElementById("convert");
+                  uppercase.value = uppercase.value.toUpperCase();
+            }
+            //3. Update background
+            function onFocus() {
+                  var focus = document.getElementById("convert");
+                  focus.style.background = "yellow";
+            }
+
+            //4. Mouse hover
+            function mouseOver() {
+                  var mouseover = document.getElementById("mouse");
+                  mouseover.style.backgroundColor = "green";
+                  mouseover.innerHTML = "Thank you"
+            }
+              function mouseOut() {
+                  var mouseover = document.getElementById("mouse");
+                  mouseover.style.backgroundColor = "cyan";
+                  mouseover.innerHTML = "Mouse Over me..!"
+            }
+
+
+            //5. Change Iamge
+            function wifiOn() {
+                  var wifi_on = document.getElementById("image");
+                  wifi_on.src = "img/Wifi-On.png";
+            }
+             function wifiOff() {
+                  var wifi_on = document.getElementById("image");
+                  wifi_on.src = "img/Wifi-Off.png";
+            }
+      </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>DOM Elements, HTML And Css</title>
+</head>
+<body>
+      <h1>DOM Elements, HTML And CSS</h1>
+      
+      <p id="jstitle">JavaScript</p>
+
+      <b>Finding HTML element using the tag name</b>
+
+      <p id="jstext"><i>JavaScript is <b>very</b> easy to <b>learn</b></i></p>
+
+      <i class="jsdescription">JavaScript is a programming language</i>
+
+      <h2 id="jsstyled" style="color : red">JavaScript</h2>
+
+      <button type="button" onclick="document.getElementById('jsstyled').style.color = 'green'">Click Me</button>
+
+      <!-- JavaScript  -->
+      <script>
+            var language = document.getElementById('jstitle')
+            console.log("The contents of jstitle: ", language.innerHTML);
+
+            var bTags = document.getElementsByTagName('b');
+            console.log("\nAll the <b> tags in the document: ", bTags);
+            console.log("The first <b> tag: ", bTags[0].innerHTML);
+            
+            var pTags = document.getElementsByTagName('p');
+            console.log("\nThe number of <p> tags: ", pTags.length);
+
+            var jstext = document.getElementById('jstext');
+            var jstextbTags = jstext.getElementsByTagName('b');
+            console.log("\nListing the <b> tags in jstext", jstextbTags);
+
+
+            var jsdesc = document.getElementsByClassName('jsdescription');
+            console.log("\nThe innterHTML of the first jsdescription element: ", jsdesc[0].innerHTML);
+
+            var select = document.querySelectorAll("i.jsdescription")
+            console.log("\nUsing the CSS selector i.jsdescription ", select[0].innerHTML);
+
+            var data = document.getElementById('jstitle');
+            console.log("\nModifying the innterHTML of an element: ")
+            console.log("Old data: ", data.innerHTML);
+            var dewData = data.innerHTML = "Programming with jS";
+            console.log("New data: ", dewData);
+
+      </script>
+</body>
+</html>

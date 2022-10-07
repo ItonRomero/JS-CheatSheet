@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Nodes</title>
+</head>
+<body>
+      <h1>Nodes</h1>
+      
+      <b>Manipulating DOM</b>
+
+      <p id="jstitle">JavaScript</p>
+
+      <p id="jsdescription">JavaScript is <i>easy</i> to learn</p>
+
+      <ul id="unOrder">
+            <li>Tpyton</li>
+      </ul>
+
+      <!-- JavaScript  -->
+      <script>
+
+            //accesing the child Nodes of a DOM
+            var jsDescription = document.getElementById('jsdescription');
+            console.log("Accesing text using innterHTML for jsdescription: ", jsDescription.innerHTML);
+
+            console.log("Accessing childNodes: ", jsDescription.childNodes);
+
+            console.log("Accessing firstChild.nodeValue: ", jsDescription.firstChild.nodeValue);
+
+            console.log("Accessing lastChild.nodeValue: ", jsDescription.lastChild.nodeValue);
+
+            console.log("Accesing childNodes[1].firstChild.nodeValue: ", jsDescription.childNodes[1].firstChild.nodeValue);
+
+            console.log("document.nodeValue : ", document.nodeValue);
+
+            
+            var jstitle = document.getElementById('jstitle');
+            console.log("jstitle.nodeName: ", jstitle.nodeName);
+
+            console.log("document.nodeName : ", document.nodeName);
+
+            console.log("The nodeTypes for the different nodes: ")
+
+            console.log("The Document : ", document.nodeType);
+            console.log("Element node (id=jstitle): ", jstitle.nodeType);
+            console.log("Text node (firstChild of an element): ", jstitle.firstChild.nodeType);
+
+
+            //adding nodes to the DOM
+            var unOrderedList = document.getElementById('unOrder');
+
+            var listItem1 = document.createElement('li');
+
+            console.log("Creating new elements")
+            console.log("The first li element: ", listItem1);
+
+            listItem1.textContent = "JavaScript";
+            console.log("The first li element with textContent: ", listItem1);
+
+
+            var listItem2 = document.createElement('li');
+            var text2 = document.createTextNode("Java");
+            listItem2.appendChild(text2);
+
+            console.log("The second li element: ", listItem2);
+
+            unOrderedList.prepend(listItem1);
+            unOrderedList.append(listItem2);
+
+            var h4 = document.createElement('h4');
+            h4.textContent = "This is a List of useful programming languages: ";
+            document.body.insertBefore(h4, unOrderedList);
+
+            h4.style.backgroundColor = "cyan";
+
+            var h3 = document.createElement('h3');
+            h3.textContent = "This marks the end of the unordered list";
+
+            document.body.insertBefore(h3, unOrderedList.nextSibling);
+
+
+
+            //Removing and Replacing NOdes in the DOM
+            jstitle = document.getElementById('jstitle');
+            jstitle.remove(); 
+
+            var listItem = unOrderedList.firstElementChild;
+            unOrderedList.removeChild(listItem);
+
+            var listItem3 = document.createElement("li");
+            listItem3.textContent = "Go";
+            unOrderedList.replaceChild(listItem3, listItem2);
+
+      </script>
+</body>
+</html>
