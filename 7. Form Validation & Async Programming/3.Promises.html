@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Promises</title>
+</head>
+<body>
+      <h1>Promises</h1>
+
+      <!-- JavaScript  -->
+      <script>
+
+              let regulartFunction = () => {
+                    return "Hello";
+              }   
+
+            //   let timeoutFunction = msg => {
+            //         var returnMsg;
+
+            //         setTimeout(() => {
+            //               console.log("Input msg to timeoutFunction: ", msg);
+
+            //               returnMsg = msg + " World";
+            //               console.log("timeoutFunction has constructed returnMsg", returnMsg);
+
+            //               return returnMsg;
+            //         }, 10000);
+            //   }
+
+              let followUpFunction = msg => {
+                     console.log("Follow up. Timeout returned: ", msg);
+              }
+
+            //   console.log("Before any function call...");
+            //   var regulartReturn = regulartFunction();
+            //   var timeoutReturn = timeoutFunction(regulartReturn);
+            //   followUpFunction(timeoutReturn);
+
+
+
+      //Callback
+
+            // let timeoutFunctionCallback = (msg, callback) => {
+            //       var returnMsg;
+
+            //       setTimeout(() => {
+
+            //               console.log("Input msg to timeoutFunction: ", msg);
+
+            //               returnMsg = msg + " World";
+            //               console.log("timeoutFunction has constructed returnMsg", returnMsg);
+
+            //       }, 10000);
+
+            //       callback(returnMsg)
+
+            // }
+
+            // console.log("Before callback...");
+            // var regularRuturn = regulartFunction();
+            // timeoutFunctionCallback(regularRuturn, followUpFunction);
+
+
+
+      // Prosmises 
+
+           /* let timeoutFunctionPromise = msg => {
+                  return new Promise(resolve => {
+                        
+                        var returnMsg;
+
+                        setTimeout(() => {
+                              console.log("Input msg to timeoutFunction: ", msg);
+
+                              returnMsg = msg + " World";
+                              console.log("timeoutFunction has constructed returnMsg", returnMsg);
+
+                              resolve(returnMsg);
+
+                        }, 10000);
+                  });
+            }
+
+            console.log("The second round of function calls");
+            var regularRuturn = regulartFunction();
+                                                //then method of promise
+            timeoutFunctionPromise(regularRuturn).then((timeoutReturn) => {
+                  followUpFunction(timeoutReturn);
+            });*/
+      
+
+//////////////////////////////////////////////////////////
+
+            let oneFunction = arg => {
+                  return new Promise (resolve => {
+
+                        setTimeout(() => {
+
+                              var returnVal = arg;
+                              console.log("oneFunction Produces: ", returnVal);
+                              resolve(returnVal);
+
+                        }, 2000)
+                  });
+            };
+
+
+            
+            let twoFunction = arg => {
+                  return new Promise (resolve => {
+
+                        setTimeout(() => {
+
+                              var returnVal = arg + " Two";
+                              console.log("twoFunction Produces: ", returnVal);
+                              resolve(returnVal);
+
+                        }, 2000)
+                  });
+            };
+
+
+            let threeFunction = arg => {
+                  return new Promise (resolve => {
+
+                        setTimeout(() => {
+
+                              var returnVal = arg + " Three";
+                              console.log("threeFunction Produces: ", returnVal);
+                              resolve(returnVal);
+
+                        }, 2000)
+                  });
+            };
+
+            //promise chain
+      /*    let finalVal = arg => {
+
+                  return new Promise(resolve => {
+
+                     oneFunction(arg).then((val) => {
+
+                           twoFunction(val).then((val) => {
+
+                                 threeFunction(val).then((val) => {
+
+                                       console.log("Final val: ", val);
+                                 });
+                           });
+                     });
+
+                  });
+            };
+            finalVal("One");*/ 
+
+            //aync awain syntax
+            let finalValAsync = async arg => {
+                  var one = await oneFunction(arg);
+                  var two = await twoFunction(one);
+                  var val = await threeFunction(two);
+                  console.log("Final val: ", val);
+            }
+
+            finalValAsync("One");
+      </script>
+      
+</body>
+</html>

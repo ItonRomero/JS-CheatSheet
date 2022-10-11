@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>HTML Forms</title>
+</head>
+<body bgcolor=" #d3d3d3">
+      <h1>HTML Forms</h1>
+
+      <form name= "myForm" action="/form.html" onsubmit=" return validateForm()">
+
+            <h3>Registration form</h3>
+
+            Username : <input type="text" placeholder="Your username" name="uname">
+                        <label id="unameLabel" style="color: red; visibility: hidden;">
+                              Username should have a minimum of 6 characters
+                        </label><br>
+                       <br><br>
+
+            Age : <input type="number" name="age" required><br><br>
+
+            Residency : <input type="radio" name="residency" value="resident" checked>
+                        Resident    
+                        <input type="radio" name="residency" value="nonresident">
+                        Non-resident
+                        <br><br>
+
+            Select accounts : <input type="checkbox" name="acctype" value="savings">
+                              Savings
+                              <input type="checkbox" name="acctype" value="checking" checked>
+                              Checking 
+                              <input type="checkbox" name="acctype" value="mmarket">
+                              Money Market
+                              <br><br>
+
+            Nationality : <select id="nationality">
+                              <option value="1">Australia</option>
+                              <option value="2">Canada</option>
+                              <option value="3">Germany</option>
+                              <option value="4" selected>India</option>
+                              <option value="5">Kenya</option>
+                              <option value="6">USA</option>
+                          </select>
+                           <br><br>
+
+            <input type="submit" name="fomrs" value="Submit">
+            <input type="reset" name="fomrs" value="Reset">
+      </form>
+
+      <!-- JavaScript  -->
+      <script>
+
+            function validateForm() {
+
+                  var uname = document.forms["myForm"]["uname"]  
+                  var age = document.forms["myForm"]["age"]
+                  var residentStatus = document.forms["myForm"]["residency"]
+                  var accountType = document.querySelectorAll('input[name=acctype]:checked');
+                  var nationality = document.forms["myForm"]["nationality"]
+
+                  var regXName = /^([a-zA-Z]+)$/; // pattern that only contains lower and upper case
+
+                  //username length validation
+                  if (uname.value.length < 6) {
+                        alert ("The username needs to be at least 6 characters long");
+                        uname.focus();
+                        return false;
+                  } 
+                  //username pattern validation
+                  if (!regXName.test(uname.value)) {
+                        
+                        uname.style.border = "solid 2px red";
+                        document.getElementById('unameLabel').innerHTML = "The name can only have alphabets";
+                        document.getElementById('unameLabel').style.visibility = "visible";
+                        return false;
+
+                  } else {
+
+                        uname.style.border = "solid 2px green";
+                        document.getElementById('unameLabel').innerHTML = "The username is valid";
+                        document.getElementById('unameLabel').style.color = "green";
+                        document.getElementById('unameLabel').style.visibility = "visible";
+                  }
+
+                  //age validation
+                  if(age.value < 18) {
+                        alert ("You must be atleast 18 years old to open an account");
+                        return false;
+                  }
+
+                   //account type validation
+                  if (accountType.length == 0) {
+                        document.querySelectorAll('input[name=acctype]')[1].checked = true;
+                  }
+                  
+                  confirm("Do you want to submit the form");
+                  return true;
+
+            }
+
+      </script>
+
+</body>
+</html>

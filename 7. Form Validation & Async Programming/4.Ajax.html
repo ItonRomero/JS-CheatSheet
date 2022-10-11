@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Ajax</title>
+</head>
+<body>
+      <div id="code">
+      <h1>Ajax</h1>
+
+      <button type="button" onclick="fethcImage()">Use Fetch</button>
+      <button type="button" onclick="ajaxRequest()">Use XMLHttpRequest!</button>
+      </div>
+
+      <!-- JavaScript -->
+      <script>
+
+            const imgURL = "https://images.pexels.com/photos/326119/pexels-photo-326119.jpeg?cs=srgb&dl=pexels-pixabay-326119.jpg&fm=jpg"
+
+            let fethcImage = async () => {
+                  var myImageResponse = await fetch(imgURL); 
+                  console.log("image response: \n" , myImageResponse.blob());
+            }
+
+
+            function ajaxRequest() {
+                   
+                   function reqListner () {
+                         console.log(this.response);
+                   }
+
+                  var xmlRequest = new XMLHttpRequest();
+
+                  xmlRequest.addEventListener("load", reqListner.bind(xmlRequest));
+                  xmlRequest.open("GET", imgURL);
+                  xmlRequest.send();
+            }
+
+            // another way 
+
+            /*function ajaxRequest() {
+                   
+                  
+                  var xmlRequest = new XMLHttpRequest();
+
+                  xmlRequest.open("GET", imgURL);
+                  xmlRequest.send();
+
+                  xmlRequest.onload = function(e) {
+                        console.log(xmlRequest.response);
+                  }
+            }*/
+      </script>
+</body>
+</html>
