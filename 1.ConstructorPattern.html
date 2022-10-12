@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Constructor Pattern</title>
+</head>
+<body>
+      <h1>Constructor Pattern</h1>
+      <!-- A special method used to initialized an object once it has been created in memory -->
+
+      <!-- JavaScript -->
+      <script>
+            //initialized student object
+            var student = {};
+            console.log("Empty student object: ", student);
+
+            //assign some properties to student object
+            student.name = "Alice";  //dot notation
+            student["university"] = "Amazing University"; //squarebracket notation
+            student.gpa = 3.8;
+            console.log("student object with properties: ", student);
+
+            //added function to student object
+            student.printDetails = function() {
+                  console.log("***** printDetails");
+                  console.log("Name:", this.name,  //"this" is a reference for a current object
+                              "University:", this.university, //dot notation
+                              "GPA: ", this["gpa"]);  //squarebracket notation
+                  console.log("*****");
+
+            }
+            console.log("student object with function properties: ", student);
+            //print the function in object
+            student.printDetails();
+
+      //////////////////////////////////////
+            //Different way or Different techniques
+            //Using Object.create function 
+            //Object.create(<some object>) - The newly created object will use the properties of the object as the prototype of the new object
+            //Object.prototype - Functions which are part of the prototype properties of the base object
+            var another_student = Object.create(Object.prototype); //input agruement Object.prototype
+
+            another_student.name = "Iton";
+            another_student.university = "Intelligent University";
+            another_student["gpa"] = 3.4;
+            another_student.printDetails = function() {
+                  console.log("***** printDetails");
+                  console.log("Name:", this.name, 
+                              "University:", this["university"], 
+                              "GPA: ", this.gpa); 
+                  console.log("*****");
+            }
+             console.log("another_student object with properties: ", another_student);
+             another_student.printDetails();
+
+       //////////////////////////////////////
+             //Different way or Different techniques
+
+             var yet_another_student = new Object();
+
+            yet_another_student.name = "kares";
+            yet_another_student.university = "Pinnacle University";
+            yet_another_student.gpa = 3.3;
+            yet_another_student.printDetails = function() {
+                  console.log("***** printDetails");
+                  console.log("Name:", this.name, 
+                              "University:", this.university, 
+                              "GPA: ", this.gpa); 
+                  console.log("*****");
+            }
+            console.log("yet_another_student object with properties: ", yet_another_student);
+            yet_another_student.printDetails();
+
+      //////////////////////////////////////
+            //Template for Object Creation 
+
+            // object constuctor using function constuctor 
+            function Student(name, university) {
+                  this.name = name;
+                  this.university = university;
+
+                  this.printDetails = function() {
+                  console.log("***** printDetails");
+                  console.log("Name:", this.name, 
+                              "University:", this.university, 
+                              "GPA: ", this.gpa); 
+                  console.log("*****");
+                  }     
+            }
+            var student_1 = new Student("Nora", "Bestlink University");
+            console.log("student_1:", student_1);
+            student_1.printDetails();
+            student_1.gpa = 3.7; //adding a gpa
+            console.log("student_1 with gpa:", student_1);
+            student_1.printDetails();
+
+            //declaring a funtion as protoype of Student object 
+            Student.prototype.showDetails = function() {
+                  console.log("***** showDetails");
+                  console.log("Name:", this.name, 
+                              "University:", this.university, 
+                              "GPA: ", this.gpa); 
+                  console.log("*****");
+            }
+            student_1.showDetails();
+
+
+            var student_2 = new Student("Jinky", "Science University");
+            student_2.gpa = 3.2;
+            console.log("student_2 with gpa:", student_2);
+            student_2.printDetails();
+            student_2.showDetails();
+
+      ///////////////////////////////
+            //Template for Object Creation 
+            // ES6 Classes
+            //are syntactic sugar over objects created using special function constructors
+            class StudentClass {
+                  constructor(name, university, gpa) {
+                        this.name = name;
+                        this.university = university;
+                        this.gpa = gpa;
+                        this.printDetails = function() {
+                              console.log("***** printDetails");
+                              console.log("Name:", this.name, 
+                                          "University:", this.university, 
+                                          "GPA: ", this.gpa); 
+                               console.log("*****");
+                        }     
+                  }
+                   //declaring a funtion as protoype of Student object 
+                  showDetails() {
+                  console.log("***** showDetails");
+                  console.log("Name:", this.name, 
+                              "University:", this.university, 
+                              "GPA: ", this.gpa); 
+                  console.log("*****");
+                  }
+            }
+
+            var student_10 = new StudentClass("Robert", "Professional University", 3.9 );
+            console.log("student_10:", student_10);
+            student_10.printDetails();
+            student_10.showDetails();
+      </script>
+</body>
+</html>

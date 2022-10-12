@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Factory Pattern</title>
+</head>
+<body>
+      <h1>Factory Pattern</h1>
+      <!-- Abstract away object creation details using interface which can be used to create different objects -->
+      
+      <!-- JavaScript  -->
+      <script>
+            // Object Constructor using ES6 Classes 
+            class Vehicle {
+                  constructor(vehicleType, make, model) {
+                        this.vehicleType = vehicleType;
+                        this.make = make;
+                        this.model = model;
+                  }
+                  //best practices
+                  printDetails() { //function
+                        console.log("Vehicle Type: ", this.vehicleType,
+                                    "Make: ", this.make,
+                                    "Model: ", this.model);
+                  }
+            };
+
+            class Car extends Vehicle {
+                  constructor(details) {
+                        super("car", details.make, details.model);
+                        this.carType = details.carType;
+                  }
+                   printDetails() { //function
+                        console.log("***** printDetails");
+                        super.printDetails();
+                        console.log("Car Type: ", this.carType);
+                        console.log("*****")
+                  }
+            }
+
+
+            class Truck extends Vehicle {
+                  constructor(details) {
+                        super("truck", details.make, details.model);
+                        this.truckType = details.truckType;
+                  }
+                   printDetails() { //function
+                        console.log("***** printDetails");
+                        super.printDetails();
+                        console.log("Truck Type: ", this.truckType);
+                        console.log("*****")
+                  }
+            }
+
+      /////////// FACTORY METHOD.
+
+            /*class VehicleFactory {
+                  // factory method 
+                  createVehicle(vehicleType, details){
+
+                        var vehicleCtor = Car;
+                        if(vehicleType == "car") {
+                              vehicleCtor = Car;
+                        } 
+                        else if (vehicleType == "truck") {
+                              vehicleCtor = Truck;
+                        }
+
+                        return new vehicleCtor(details);
+                  }
+            }
+
+            var vehicleFactory = new VehicleFactory();
+            console.log("Vehicle Factory: ", vehicleFactory);
+
+            // create car 
+            var carDetails = {
+                  "make": "Honda",
+                  "model": "Civic",
+                  "carType": "sedan"
+            }
+            var car = vehicleFactory.createVehicle("car", carDetails);
+            console.log("Created car: ", car);
+            console.log("Is instanceof Car?: ", (car instanceof Car));
+            car.printDetails();
+
+
+            // create tuck 
+            var truckDetails = {
+                  "make": "Ashok leyland",
+                  "model": "D20B",
+                  "carType": "sedan"
+            }
+
+            var truck = vehicleFactory.createVehicle("truck", truckDetails);
+            console.log("Created truck: ", truck);
+            console.log("Is instanceof Truck?: ", (truck instanceof Truck));
+            truck.printDetails();*/
+
+
+
+            // ANOTHER WAY for FACTORY PATTERN 
+
+            class CustomVehicleFactory {
+                  constructor(vehicleType) {
+                        if (vehicleType == "car") {
+                              this.vehicleCtor = Car;
+                        } 
+                        else if (vehicleType == "truck") {
+                              this.vehicleCtor = Truck;
+                        }
+                  }
+
+                  createVehicle(details) {
+                        return new this.vehicleCtor(details)
+                  }
+            }
+
+            var carFactory = new CustomVehicleFactory("car")
+            console.log("Car factory: ", carFactory);
+
+            var truckFactory = new CustomVehicleFactory("truck");
+            console.log("Truck factory: ", truckFactory);
+
+
+            var carDetails = {
+                  "make": "BMW",
+                  "model": "5 series",
+                  "carType": "convertible"
+            }
+
+            var car = carFactory.createVehicle(carDetails);
+            console.log("Created car?: ", car);
+            console.log("Is instanceof Car?: ", (car instanceof Car));
+            car.printDetails();
+
+
+             var truckDetails = {
+                  "make": "Western Star",
+                  "model": "A1",
+                  "carType": "lowboy trailer"
+            }
+
+            var truck = truckFactory.createVehicle(truckDetails);
+            console.log("Created car?: ", truck);
+            console.log("Is instanceof Car?: ",  (truck instanceof Truck));
+            truck.printDetails();
+      </script>
+      
+</body>
+</html>
